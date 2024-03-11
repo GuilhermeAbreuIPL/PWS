@@ -5,6 +5,7 @@ use Carbon\Carbon;
 
 function calculaPlano($credito, $numPrest)
 {
+    //Declaração de variáveis
     $planoDePagamentos = array();
     $data = Carbon::now();
 
