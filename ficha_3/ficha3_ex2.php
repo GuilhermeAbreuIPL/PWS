@@ -68,9 +68,6 @@ for ($i = 1; $i <= $numPrest; $i++) {
             echo "</tr>";
         }
         ?>
-
-
-
 </table>
 
 
