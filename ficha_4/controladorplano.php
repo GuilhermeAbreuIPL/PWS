@@ -1,11 +1,9 @@
 <?php
 //Declaração de variáveis
-//$credito = 1000;
-//$numPrest = 6;
 $planoDePagamentos = array();
 $despesaCredito = 50;
 
-//Obtenção dos dados do formulário e validação, calculo do plano de pagamentos e apresentação dos dados na tabela
+//Verifica se os dados do fomulario já foram prenchidos e se sim ele apresenta os dados na tabela se não pede os dados
 if ($_SERVER['REQUEST_METHOD'] !== 'GET') {
     $credito = $_POST['credito'];
     $numPrest = $_POST['numPrest'];
