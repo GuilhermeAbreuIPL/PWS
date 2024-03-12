@@ -31,5 +31,7 @@
     }
     ?>
 </table>
+<br>
+<a href="controladorplano.php">Clear Table</a>
 </body>
 </html>
