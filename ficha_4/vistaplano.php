@@ -8,12 +8,14 @@
     <title>Document</title>
 </head>
 <body>
+<h1>Tabela de Prestações</h1>
+
 <table border="1">
 
     <?php
     //Apresentação dos dados
-    echo "<h3> Data do emprestimo: " . $planoDePagamentos[0][0] . "</h3>";
-    echo "<h3> O valor da despesa do crédito é de " . $despesaCredito . "€ e encontra-se incluída na primeira prestação</h3>";
+    echo "<p> Data do emprestimo: " . $planoDePagamentos[0][0] . "</p>";
+    echo "<p> O valor da despesa do crédito é de " . $despesaCredito . "€ e encontra-se incluída na primeira prestação</p>";
     ?>
     <tr>
         <th>Data</th>

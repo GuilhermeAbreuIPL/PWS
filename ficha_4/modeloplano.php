@@ -31,5 +31,4 @@ function calculaPlano($credito, $numPrest)
 
     return $planoDePagamentos;
 }
-
 ?>
