@@ -29,9 +29,6 @@ function calculaPlano($credito, $numPrest)
     $despesaCredito = 50;
     $planoDePagamentos[0][1] += $despesaCredito;
 
-
-
-
     return $planoDePagamentos;
 }
 ?>

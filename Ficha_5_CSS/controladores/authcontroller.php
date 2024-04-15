@@ -7,7 +7,7 @@ else {
     $username = $_POST['user'];
     $password = $_POST['pass'];
     if (checkAuth($username, $password)) {
-        header('Location: controladorplano.php');
+        header('Location: controladorplano2.php');
     }
     else {
         require_once('../vistas/login.php');
