@@ -8,13 +8,13 @@
         $credito = $_POST['credito'];
         $numPrest = $_POST['numPrest'];
 
-        //Inclusão do ficheiro modeloplano.php
+        //Inclusão do ficheiro 1.php
         include_once 'modeloplano.php';
 
         // Chama a função calculaPlano() para obter o plano de pagamentos
         $planoDePagamentos = calculaPlano($credito, $numPrest);
 
-        //Inclusão do ficheiro vistaplano.php
+        //Inclusão do ficheiro show.php
         include_once 'vistaplano.php';
     }
     else{
