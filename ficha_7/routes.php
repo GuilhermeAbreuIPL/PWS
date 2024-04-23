@@ -7,7 +7,8 @@
         'defaultRoute' => ['GET', 'AuthController', 'index'],
         'auth' => [
             'index' => ['GET', 'AuthController', 'index'],
-            'login' => ['POST', 'AuthController', 'login']
+            'login' => ['POST', 'AuthController', 'login'],
+            'logout' => ['GET', 'AuthController', 'logout']
         ],
 
         'plano' => [

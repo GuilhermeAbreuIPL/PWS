@@ -2,26 +2,26 @@
 require_once './models/Plano.php';
 require_once './models/Auth.php';
 
-class PlanoController
+class PlanoController extends Controller
 {
     public function __construct()
     {
         $auth = new Auth();
         if (! $auth -> IsLoggedIn())
         {
-            header('Location: index.php?c=auth&a=index');
+            $this->renderView('auth', 'index');
         }
     }
 
     public function index()
     {
-        require_once './views/plano/index.php';
+        $this->renderView('plano', 'index');
     }
 
     public function show()
     {
-        $credito = $_POST['credito'];
-        $numPrest = $_POST['numPrest'];
+        $credito = $this->getHTTPPostParam('credito');
+        $numPrest = $this->getHTTPPostParam('numPrest');
 
         $despesa = 10;
 
@@ -29,7 +29,7 @@ class PlanoController
 
         $planoPagamento = $plano->calculaPlano($credito, $numPrest);
 
-        require_once './views/show.php';
+        $this->renderView('plano', 'show', ['planoDePagamentos' => $planoPagamento, 'numPrest' => $numPrest]);
     }
 
     

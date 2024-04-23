@@ -1,27 +1,28 @@
 <?php
 require_once './models/Auth.php';
+require_once 'Controller.php';
 
-class AuthController
+class AuthController extends Controller
 {
     public function index()
     {
-        require_once './views/auth/index.php';
+        $this->renderView('auth', 'index', [], 'default');
     }
 
     public function login()
     {
-        $nome = $_POST['username'];
-        $pass = $_POST['password'];
+        $nome = $this->getHTTPPostParam('username');
+        $pass = $this->getHTTPPostParam('password');
 
         $auth = new Auth();
 
         if ($auth->CheckAuth($nome, $pass))
         {
-            header('Location: index.php?c=plano&a=index');
+            $this->redirectToRoute('plano', 'index');
         }
         else
         {
-           require_once './views/auth/index.php';
+            $this->renderView('auth', 'index', [], 'default');
         }
     }
 
@@ -29,7 +30,7 @@ class AuthController
     {
         $auth = new Auth();
         $auth->Logout();
-        header('Location: index.php?c=auth&a=index');
+        $this->renderView('auth', 'index', [], 'default');
     }
 
 }
