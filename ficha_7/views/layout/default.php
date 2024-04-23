@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Meu Site</title>
+    <title><?php echo APP_NAME ?></title>
     <link rel="stylesheet" href="public/css/bootstrap.min.css">
 </head>
 <body>

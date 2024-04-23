@@ -49,4 +49,12 @@ class Controller
         return isset($_GET[$key]);
     }
 
+    protected function authenticationFilter()
+    {
+        $auth = new Auth();
+        if (! $auth -> IsLoggedIn())
+        {
+            header('Location: ' . INVALID_ACCESS_ROUTE);
+        }
+    }
 }

@@ -6,11 +6,7 @@ class PlanoController extends Controller
 {
     public function __construct()
     {
-        $auth = new Auth();
-        if (! $auth -> IsLoggedIn())
-        {
-            $this->renderView('auth', 'index');
-        }
+        $this->authenticationFilter();
     }
 
     public function index()
