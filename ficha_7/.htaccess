@@ -1,0 +1,7 @@
+# Deny access to all
+Require all denied
+
+# Allow access to index.php
+<Files "index.php">
+    Require all granted
+</Files>
