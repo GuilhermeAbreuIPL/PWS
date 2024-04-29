@@ -13,7 +13,6 @@ class Plano
         //Cálculo do valor da prestação
         $valorPrest = $credito / $numPrest;
 
-
         //Criação do plano de pagamentos
         for ($i = 0; $i <= $numPrest; $i++) {
 
@@ -29,8 +28,7 @@ class Plano
 
         //Cálculo da despesa do crédito
         $despesaCredito = 50;
-
-        $planoDePagamentos[0][1] = number_format($valorPrest + $despesaCredito, 2);
+        $planoDePagamentos[0][1] += $despesaCredito;
 
         return $planoDePagamentos;
     }
