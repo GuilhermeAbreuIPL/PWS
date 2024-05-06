@@ -54,7 +54,10 @@ class Controller
         $auth = new Auth();
         if (! $auth -> IsLoggedIn())
         {
-            header('Location: ' . INVALID_ACCESS_ROUTE);
+            echo "<script>
+            alert('Tentativa de acesso inválida!\\nPor favor, inicie sessão primeiro!');
+            window.location.href='" . INVALID_ACCESS_ROUTE . "';
+            </script>";
         }
     }
 }
