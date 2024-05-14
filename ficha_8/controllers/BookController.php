@@ -32,6 +32,7 @@ class BookController extends Controller
     public function store()
     {
         $book = new Book($this-> getHTTPPost());
+
         if($book->is_valid()){
             $book->save();
             //redirecionar para o index
