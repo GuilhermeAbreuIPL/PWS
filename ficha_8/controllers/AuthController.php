@@ -23,7 +23,7 @@ class AuthController extends Controller
         }
         else
         {
-            $this->renderView('auth', 'index', [], 'default');
+            $this->renderView('auth', 'index', [], 'layout');
         }
     }
 
@@ -31,7 +31,7 @@ class AuthController extends Controller
     {
         $auth = new Auth();
         $auth->Logout();
-        $this->renderView('auth', 'index', [], 'default');
+        $this->renderView('auth', 'index', [], 'layout');
     }
 
 }

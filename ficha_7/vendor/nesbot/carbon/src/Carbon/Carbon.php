@@ -49,7 +49,7 @@ use DateTimeZone;
  * @property      int              $isoWeek                                                                                        1 through 53
  * @property      int              $weekYear                                                                                       year according to week format
  * @property      int              $isoWeekYear                                                                                    year according to ISO week format
- * @property      int              $age                                                                                            does a diffInYears() with default parameters
+ * @property      int              $age                                                                                            does a diffInYears() with layout parameters
  * @property      int              $offset                                                                                         the timezone offset in seconds from UTC
  * @property      int              $offsetMinutes                                                                                  the timezone offset in minutes from UTC
  * @property      int              $offsetHours                                                                                    the timezone offset in hours from UTC

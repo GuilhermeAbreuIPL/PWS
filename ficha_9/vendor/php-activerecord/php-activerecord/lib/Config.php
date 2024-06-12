@@ -24,7 +24,7 @@ use Closure;
 class Config extends Singleton
 {
     /**
-     * Name of the connection to use by default.
+     * Name of the connection to use by layout.
      *
      * ```
      * ActiveRecord\Config::initialize(function($cfg) {
@@ -171,7 +171,7 @@ class Config extends Singleton
     }
 
     /**
-     * Returns the default connection string or null if there is none.
+     * Returns the layout connection string or null if there is none.
      *
      * @return string
      */
@@ -182,7 +182,7 @@ class Config extends Singleton
     }
 
     /**
-     * Returns the name of the default connection.
+     * Returns the name of the layout connection.
      *
      * @return string
      */
@@ -192,7 +192,7 @@ class Config extends Singleton
     }
 
     /**
-     * Set the name of the default connection.
+     * Set the name of the layout connection.
      *
      * @param string $name Name of a connection in the connections array
      */

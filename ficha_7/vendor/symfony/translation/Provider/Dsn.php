@@ -43,7 +43,7 @@ final class Dsn
         $this->scheme = $params['scheme'];
 
         if (!isset($params['host'])) {
-            throw new InvalidArgumentException('The translation provider DSN must contain a host (use "default" by default).');
+            throw new InvalidArgumentException('The translation provider DSN must contain a host (use "layout" by layout).');
         }
         $this->host = $params['host'];
 

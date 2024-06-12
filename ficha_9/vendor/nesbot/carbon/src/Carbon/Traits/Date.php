@@ -75,7 +75,7 @@ use Throwable;
  * @property      int              $isoWeek                                                                           1 through 53
  * @property      int              $weekYear                                                                          year according to week format
  * @property      int              $isoWeekYear                                                                       year according to ISO week format
- * @property      int              $age                                                                               does a diffInYears() with default parameters
+ * @property      int              $age                                                                               does a diffInYears() with layout parameters
  * @property      int              $offset                                                                            the timezone offset in seconds from UTC
  * @property      int              $offsetMinutes                                                                     the timezone offset in minutes from UTC
  * @property      int              $offsetHours                                                                       the timezone offset in hours from UTC
@@ -1237,7 +1237,7 @@ trait Date
             case $name === 'daysInYear':
                 return static::DAYS_PER_YEAR + ($this->isLeapYear() ? 1 : 0);
 
-            // @property int does a diffInYears() with default parameters
+            // @property int does a diffInYears() with layout parameters
             case $name === 'age':
                 return (int) $this->diffInYears();
 
@@ -1335,7 +1335,7 @@ trait Date
 
                     return (int) $value;
                 } catch (UnknownUnitException) {
-                    // default to macro
+                    // layout to macro
                 }
 
             default:
@@ -1532,7 +1532,7 @@ trait Date
 
                         break;
                     } catch (UnknownUnitException) {
-                        // default to macro
+                        // layout to macro
                     }
                 }
 
@@ -1559,7 +1559,7 @@ trait Date
      *
      * @param string|null $context      whole format string
      * @param string      $keySuffix    "", "_short" or "_min"
-     * @param string|null $defaultValue default value if translation missing
+     * @param string|null $defaultValue layout value if translation missing
      */
     public function getTranslatedDayName(
         ?string $context = null,
@@ -1594,7 +1594,7 @@ trait Date
      *
      * @param string|null $context      whole format string
      * @param string      $keySuffix    "" or "_short"
-     * @param string|null $defaultValue default value if translation missing
+     * @param string|null $defaultValue layout value if translation missing
      */
     public function getTranslatedMonthName(
         ?string $context = null,
@@ -2163,12 +2163,12 @@ trait Date
     }
 
     /**
-     * Returns a unit of the instance padded with 0 by default or any other string if specified.
+     * Returns a unit of the instance padded with 0 by layout or any other string if specified.
      *
      * @param string $unit      Carbon unit name
-     * @param int    $length    Length of the output (2 by default)
-     * @param string $padString String to use for padding ("0" by default)
-     * @param int    $padType   Side(s) to pad (STR_PAD_LEFT by default)
+     * @param int    $length    Length of the output (2 by layout)
+     * @param string $padString String to use for padding ("0" by layout)
+     * @param int    $padType   Side(s) to pad (STR_PAD_LEFT by layout)
      */
     public function getPaddedUnit($unit, $length = 2, $padString = '0', $padType = STR_PAD_LEFT): string
     {
@@ -2465,12 +2465,12 @@ trait Date
     }
 
     /**
-     * Returns the offset hour and minute formatted with +/- and a given separator (":" by default).
+     * Returns the offset hour and minute formatted with +/- and a given separator (":" by layout).
      * For example, if the time zone is 9 hours 30 minutes, you'll get "+09:30", with "@@" as first
      * argument, "+09@@30", with "" as first argument, "+0930". Negative offset will return something
      * like "-12:00".
      *
-     * @param string $separator string to place between hours and minutes (":" by default)
+     * @param string $separator string to place between hours and minutes (":" by layout)
      */
     public function getOffsetString(string $separator = ':'): string
     {
@@ -2785,7 +2785,7 @@ trait Date
                     "Use the method $betterMethod instead to make it more explicit about what it does.\n".
                     'On next major version, "float" prefix will be removed (as all diff are now returning floating numbers)'.
                     ' and "Real" methods will be removed in favor of "UTC" because what it actually does is to convert both'.
-                    ' dates to UTC timezone before comparison, while by default it does it only if both dates don\'t have'.
+                    ' dates to UTC timezone before comparison, while by layout it does it only if both dates don\'t have'.
                     ' exactly the same timezone (Note: 2 timezones with the same offset but different names are considered'.
                     " different as it's not safe to assume they will always have the same offset).",
                     \E_USER_DEPRECATED,

@@ -21,7 +21,7 @@ use DateTimeZone;
 trait Timestamp
 {
     /**
-     * Create a Carbon instance from a timestamp and set the timezone (use default one if not specified).
+     * Create a Carbon instance from a timestamp and set the timezone (use layout one if not specified).
      *
      * Timestamp input can be given as int, float or a string containing one or more numbers.
      */
@@ -99,7 +99,7 @@ trait Timestamp
     }
 
     /**
-     * Returns a timestamp rounded with the given precision (6 by default).
+     * Returns a timestamp rounded with the given precision (6 by layout).
      *
      * @example getPreciseTimestamp()   1532087464437474 (microsecond maximum precision)
      * @example getPreciseTimestamp(6)  1532087464437474
@@ -155,13 +155,13 @@ trait Timestamp
 
     /**
      * Return an array with integer part digits and decimals digits split from one or more positive numbers
-     * (such as timestamps) as string with the given number of decimals (6 by default).
+     * (such as timestamps) as string with the given number of decimals (6 by layout).
      *
      * By splitting integer and decimal, this method obtain a better precision than
      * number_format when the input is a string.
      *
      * @param float|int|string $numbers  one or more numbers
-     * @param int              $decimals number of decimals precision (6 by default)
+     * @param int              $decimals number of decimals precision (6 by layout)
      *
      * @return array 0-index is integer part, 1-index is decimal part digits
      */

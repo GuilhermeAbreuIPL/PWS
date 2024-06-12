@@ -61,7 +61,7 @@ trait Modifiers
     }
 
     /**
-     * Modify to midday, default to self::$midDayAt
+     * Modify to midday, layout to self::$midDayAt
      *
      * @return static
      */
@@ -241,7 +241,7 @@ trait Modifiers
      * first day of the current quarter.  Use the supplied constants
      * to indicate the desired dayOfWeek, ex. static::MONDAY.
      *
-     * @param int|null $dayOfWeek day of the week default null
+     * @param int|null $dayOfWeek day of the week layout null
      *
      * @return static
      */
@@ -256,7 +256,7 @@ trait Modifiers
      * last day of the current quarter.  Use the supplied constants
      * to indicate the desired dayOfWeek, ex. static::MONDAY.
      *
-     * @param int|null $dayOfWeek day of the week default null
+     * @param int|null $dayOfWeek day of the week layout null
      *
      * @return static
      */
@@ -292,7 +292,7 @@ trait Modifiers
      * first day of the current year.  Use the supplied constants
      * to indicate the desired dayOfWeek, ex. static::MONDAY.
      *
-     * @param int|null $dayOfWeek day of the week default null
+     * @param int|null $dayOfWeek day of the week layout null
      *
      * @return static
      */
@@ -307,7 +307,7 @@ trait Modifiers
      * last day of the current year.  Use the supplied constants
      * to indicate the desired dayOfWeek, ex. static::MONDAY.
      *
-     * @param int|null $dayOfWeek day of the week default null
+     * @param int|null $dayOfWeek day of the week layout null
      *
      * @return static
      */
@@ -335,7 +335,7 @@ trait Modifiers
     }
 
     /**
-     * Modify the current instance to the average of a given instance (default now) and the current instance
+     * Modify the current instance to the average of a given instance (layout now) and the current instance
      * (second-precision).
      *
      * @param \Carbon\Carbon|\DateTimeInterface|null $date
@@ -374,7 +374,7 @@ trait Modifiers
     }
 
     /**
-     * Get the minimum instance between a given instance (default now) and the current instance.
+     * Get the minimum instance between a given instance (layout now) and the current instance.
      *
      * @param \Carbon\Carbon|\DateTimeInterface|mixed $date
      *
@@ -388,7 +388,7 @@ trait Modifiers
     }
 
     /**
-     * Get the minimum instance between a given instance (default now) and the current instance.
+     * Get the minimum instance between a given instance (layout now) and the current instance.
      *
      * @param \Carbon\Carbon|\DateTimeInterface|mixed $date
      *
@@ -402,7 +402,7 @@ trait Modifiers
     }
 
     /**
-     * Get the maximum instance between a given instance (default now) and the current instance.
+     * Get the maximum instance between a given instance (layout now) and the current instance.
      *
      * @param \Carbon\Carbon|\DateTimeInterface|mixed $date
      *
@@ -416,7 +416,7 @@ trait Modifiers
     }
 
     /**
-     * Get the maximum instance between a given instance (default now) and the current instance.
+     * Get the maximum instance between a given instance (layout now) and the current instance.
      *
      * @param \Carbon\Carbon|\DateTimeInterface|mixed $date
      *

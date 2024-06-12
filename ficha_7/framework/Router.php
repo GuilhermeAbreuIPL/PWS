@@ -9,7 +9,7 @@ class Router {
         // Get the controller and action from the query string
         $controllerPrefix = $_GET['c'] ?? null;
         $action = $_GET['a'] ?? null;
-        // If the controller and action are not specified, use the default route
+        // If the controller and action are not specified, use the layout route
         if ($controllerPrefix && $action) {
             $route = $controllerPrefix . '/' . $action;
         } else {

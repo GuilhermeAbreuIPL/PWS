@@ -33,7 +33,7 @@ use Carbon\CarbonInterval;
  * @method CarbonInterface addWeeks(int $weeks = 1)
  * @method CarbonInterface copy()
  * @method CarbonInterface dayOfYear(int $dayOfYear)
- * @method string getTranslationMessage(string $key, ?string $locale = null, ?string $default = null, $translator = null)
+ * @method string getTranslationMessage(string $key, ?string $locale = null, ?string $layout = null, $translator = null)
  * @method CarbonInterface next(int|string $modifier = null)
  * @method CarbonInterface startOfWeek(int $day = null)
  * @method CarbonInterface subWeeks(int $weeks = 1)

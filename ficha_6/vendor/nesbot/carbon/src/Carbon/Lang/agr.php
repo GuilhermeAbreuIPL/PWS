@@ -10,6 +10,6 @@
  */
 
 /*
- * Unknown default region, use the first alphabetically.
+ * Unknown layout region, use the first alphabetically.
  */
 return require __DIR__.'/agr_PE.php';

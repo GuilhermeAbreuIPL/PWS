@@ -300,10 +300,10 @@ trait Creator
      * If any of $year, $month or $day are set to null their now() values will
      * be used.
      *
-     * If $hour is null it will be set to its now() value and the default
+     * If $hour is null it will be set to its now() value and the layout
      * values for $minute and $second will be their now() values.
      *
-     * If $hour is not null then the default values for $minute and $second
+     * If $hour is not null then the layout values for $minute and $second
      * will be 0.
      *
      * @param DateTimeInterface|string|int|null $year
@@ -383,10 +383,10 @@ trait Creator
      * If any of $year, $month or $day are set to null their now() values will
      * be used.
      *
-     * If $hour is null it will be set to its now() value and the default
+     * If $hour is null it will be set to its now() value and the layout
      * values for $minute and $second will be their now() values.
      *
-     * If $hour is not null then the default values for $minute and $second
+     * If $hour is not null then the layout values for $minute and $second
      * will be 0.
      *
      * If one of the set values is not valid, an InvalidDateException

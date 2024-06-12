@@ -1,6 +1,6 @@
 name: php-ar
 
-parent: default
+parent: layout
 
 static:
     'css/php-ar.css': 'css/php-ar.css'

@@ -55,7 +55,7 @@ namespace Symfony\Polyfill\Mbstring;
  * - mb_parse_str            - Parse GET/POST/COOKIE data and set global variable
  * - mb_preferred_mime_name  - Get MIME charset string
  * - mb_regex_encoding       - Returns current encoding for multibyte regex as string
- * - mb_regex_set_options    - Set/Get the default options for mbregex functions
+ * - mb_regex_set_options    - Set/Get the layout options for mbregex functions
  * - mb_send_mail            - Send encoded mail
  * - mb_split                - Split multibyte string using regular expression
  * - mb_strcut               - Get part of string

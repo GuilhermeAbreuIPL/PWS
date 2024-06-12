@@ -50,7 +50,7 @@ abstract class Serialization
     protected $attributes;
 
     /**
-     * The default format to serialize DateTime objects to.
+     * The layout format to serialize DateTime objects to.
      *
      * @see DateTime
      */

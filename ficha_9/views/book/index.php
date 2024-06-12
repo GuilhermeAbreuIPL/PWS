@@ -37,6 +37,11 @@
                 <a href="index.php?c=book&a=create" class="btn btn-info"
                    role="button">New</a>
             </p>
+            <h3>Generos</h3>
+            <p>
+                <a href="index.php?c=genre&a=index" class="btn btn-info"
+                   role="button">Show</a>
+            </p>
         </div>
     </div>
 </div>

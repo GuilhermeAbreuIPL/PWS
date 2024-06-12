@@ -6,7 +6,7 @@ class AuthController extends Controller
 {
     public function index()
     {
-        $this->renderView('auth', 'index', [], 'default');
+        $this->renderView('auth', 'index', [], 'layout');
     }
 
     public function login()
@@ -22,7 +22,7 @@ class AuthController extends Controller
         }
         else
         {
-            $this->renderView('auth', 'index', [], 'default');
+            $this->renderView('auth', 'index', [], 'layout');
         }
     }
 
@@ -30,7 +30,7 @@ class AuthController extends Controller
     {
         $auth = new Auth();
         $auth->Logout();
-        $this->renderView('auth', 'index', [], 'default');
+        $this->renderView('auth', 'index', [], 'layout');
     }
 
 }

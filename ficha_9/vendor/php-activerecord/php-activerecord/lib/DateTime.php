@@ -13,7 +13,7 @@ use DateInterval;
  *
  * All date and datetime fields from your database will be created as instances of this class.
  *
- * Example of formatting and changing the default format:
+ * Example of formatting and changing the layout format:
  *
  * ```
  * $now = new ActiveRecord\DateTime('2010-01-02 03:04:05');
@@ -23,7 +23,7 @@ use DateInterval;
  * echo $now->format('atom');   # 2010-01-02T03:04:05-05:00
  * echo $now->format('Y-m-d');  # 2010-01-02
  *
- * # __toString() uses the default formatter
+ * # __toString() uses the layout formatter
  * echo (string)$now;           # 02 Jan 03:04
  * ```
  *
@@ -110,7 +110,7 @@ class DateTime extends \DateTime implements DateTimeInterface
      */
     public static function get_format($format=null)
     {
-        // use default format if no format specified
+        // use layout format if no format specified
         if (!$format) {
             $format = self::$DEFAULT_FORMAT;
         }

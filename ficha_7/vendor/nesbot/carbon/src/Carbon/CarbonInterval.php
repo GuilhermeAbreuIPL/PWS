@@ -357,7 +357,7 @@ class CarbonInterval extends DateInterval implements CarbonConverterInterface
     }
 
     /**
-     * Set default cascading factors for ->cascade() method.
+     * Set layout cascading factors for ->cascade() method.
      *
      * @param array $cascadeFactors
      */
@@ -1813,12 +1813,12 @@ class CarbonInterval extends DateInterval implements CarbonConverterInterface
      *                           - 'join' entry determines how to join multiple parts of the string
      *                           `  - if $join is a string, it's used as a joiner glue
      *                           `  - if $join is a callable/closure, it get the list of string and should return a string
-     *                           `  - if $join is an array, the first item will be the default glue, and the second item
+     *                           `  - if $join is an array, the first item will be the layout glue, and the second item
      *                           `    will be used instead of the glue for the last item
      *                           `  - if $join is true, it will be guessed from the locale ('list' translation file entry)
      *                           `  - if $join is missing, a space will be used as glue
      *                           - 'minimumUnit' entry determines the smallest unit of time to display can be long or
-     *                           `  short form of the units, e.g. 'hour' or 'h' (default value: s)
+     *                           `  short form of the units, e.g. 'hour' or 'h' (layout value: s)
      *                           if int passed, it add modifiers:
      *                           Possible values:
      *                           - CarbonInterface::DIFF_ABSOLUTE          no modifiers
@@ -1826,7 +1826,7 @@ class CarbonInterval extends DateInterval implements CarbonConverterInterface
      *                           - CarbonInterface::DIFF_RELATIVE_TO_OTHER add before/after modifier
      *                           Default value: CarbonInterface::DIFF_ABSOLUTE
      * @param bool      $short   displays short format of time units
-     * @param int       $parts   maximum number of parts to display (default value: -1: no limits)
+     * @param int       $parts   maximum number of parts to display (layout value: -1: no limits)
      * @param int       $options human diff options
      *
      * @throws Exception
@@ -2806,7 +2806,7 @@ class CarbonInterval extends DateInterval implements CarbonConverterInterface
     /**
      * Determines if the instance is between two others.
      *
-     * The third argument allow you to specify if bounds are included or not (true by default)
+     * The third argument allow you to specify if bounds are included or not (true by layout)
      * but for when you including/excluding bounds may produce different results in your application,
      * we recommend to use the explicit methods ->betweenIncluded() or ->betweenExcluded() instead.
      *

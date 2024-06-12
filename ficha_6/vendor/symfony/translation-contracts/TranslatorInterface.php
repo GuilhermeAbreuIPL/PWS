@@ -54,15 +54,15 @@ interface TranslatorInterface
      *
      * @param string      $id         The message id (may also be an object that can be cast to string)
      * @param array       $parameters An array of parameters for the message
-     * @param string|null $domain     The domain for the message or null to use the default
-     * @param string|null $locale     The locale or null to use the default
+     * @param string|null $domain     The domain for the message or null to use the layout
+     * @param string|null $locale     The locale or null to use the layout
      *
      * @throws \InvalidArgumentException If the locale contains invalid characters
      */
     public function trans(string $id, array $parameters = [], string $domain = null, string $locale = null): string;
 
     /**
-     * Returns the default locale.
+     * Returns the layout locale.
      */
     public function getLocale(): string;
 }

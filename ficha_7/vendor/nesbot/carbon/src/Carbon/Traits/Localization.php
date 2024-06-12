@@ -27,7 +27,7 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 /**
  * Trait Localization.
  *
- * Embed default and locale translators and translation base methods.
+ * Embed layout and locale translators and translation base methods.
  */
 trait Localization
 {
@@ -47,7 +47,7 @@ trait Localization
     }
 
     /**
-     * Get the translator of the current instance or the default if none set.
+     * Get the translator of the current instance or the layout if none set.
      */
     public function getLocalTranslator(): TranslatorInterface
     {
@@ -70,7 +70,7 @@ trait Localization
      * @param TranslatorInterface|null $translator the translator to use
      * @param string                   $key        key to find
      * @param string|null              $locale     current locale used if null
-     * @param string|null              $default    default value if translation returns the key
+     * @param string|null              $default    layout value if translation returns the key
      *
      * @return string|Closure|null
      */
@@ -97,7 +97,7 @@ trait Localization
      *
      * @param string              $key        key to find
      * @param string|null         $locale     current locale used if null
-     * @param string|null         $default    default value if translation returns the key
+     * @param string|null         $default    layout value if translation returns the key
      * @param TranslatorInterface $translator an optional translator to use
      *
      * @return string
@@ -215,10 +215,10 @@ trait Localization
      * Translate a time string from a locale to an other.
      *
      * @param string      $timeString date/time/duration string to translate (may also contain English)
-     * @param string|null $from       input locale of the $timeString parameter (`Carbon::getLocale()` by default)
-     * @param string|null $to         output locale of the result returned (`"en"` by default)
+     * @param string|null $from       input locale of the $timeString parameter (`Carbon::getLocale()` by layout)
+     * @param string|null $to         output locale of the result returned (`"en"` by layout)
      * @param int         $mode       specify what to translate with options:
-     *                                - CarbonInterface::TRANSLATE_ALL (default)
+     *                                - CarbonInterface::TRANSLATE_ALL (layout)
      *                                - CarbonInterface::TRANSLATE_MONTHS
      *                                - CarbonInterface::TRANSLATE_DAYS
      *                                - CarbonInterface::TRANSLATE_UNITS
@@ -330,7 +330,7 @@ trait Localization
      * Translate a time string from the current locale (`$date->locale()`) to an other.
      *
      * @param string      $timeString time string to translate
-     * @param string|null $to         output locale of the result returned ("en" by default)
+     * @param string|null $to         output locale of the result returned ("en" by layout)
      *
      * @return string
      */

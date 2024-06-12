@@ -10,7 +10,7 @@
  */
 
 /*
- * Unknown default region, use the first alphabetically.
+ * Unknown layout region, use the first alphabetically.
  */
 return [
     'formats' => [

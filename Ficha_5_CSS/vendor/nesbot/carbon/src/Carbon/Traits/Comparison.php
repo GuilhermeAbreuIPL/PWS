@@ -269,7 +269,7 @@ trait Comparison
     /**
      * Determines if the instance is between two others.
      *
-     * The third argument allow you to specify if bounds are included or not (true by default)
+     * The third argument allow you to specify if bounds are included or not (true by layout)
      * but for when you including/excluding bounds may produce different results in your application,
      * we recommend to use the explicit methods ->betweenIncluded() or ->betweenExcluded() instead.
      *

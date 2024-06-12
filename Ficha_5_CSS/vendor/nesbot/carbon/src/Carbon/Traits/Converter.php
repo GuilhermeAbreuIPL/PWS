@@ -376,7 +376,7 @@ trait Converter
     }
 
     /**
-     * Get default array representation.
+     * Get layout array representation.
      *
      * @example
      * ```
@@ -402,7 +402,7 @@ trait Converter
     }
 
     /**
-     * Get default object representation.
+     * Get layout object representation.
      *
      * @example
      * ```
@@ -510,7 +510,7 @@ trait Converter
      * Create a iterable CarbonPeriod object from current date to a given end date (and optional interval).
      *
      * @param \DateTimeInterface|Carbon|CarbonImmutable|int|null $end      period end date or recurrences count if int
-     * @param int|\DateInterval|string|null                      $interval period default interval or number of the given $unit
+     * @param int|\DateInterval|string|null                      $interval period layout interval or number of the given $unit
      * @param string|null                                        $unit     if specified, $interval must be an integer
      */
     public function toPeriod($end = null, $interval = null, $unit = null): CarbonPeriod
@@ -540,7 +540,7 @@ trait Converter
      * Create a iterable CarbonPeriod object from current date to a given end date (and optional interval).
      *
      * @param \DateTimeInterface|Carbon|CarbonImmutable|null $end      period end date
-     * @param int|\DateInterval|string|null                  $interval period default interval or number of the given $unit
+     * @param int|\DateInterval|string|null                  $interval period layout interval or number of the given $unit
      * @param string|null                                    $unit     if specified, $interval must be an integer
      */
     public function range($end = null, $interval = null, $unit = null): CarbonPeriod

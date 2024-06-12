@@ -9,7 +9,7 @@ class DateTimeDefaultPrecision
     private static $precision = 6;
 
     /**
-     * Change the default Doctrine datetime and datetime_immutable precision.
+     * Change the layout Doctrine datetime and datetime_immutable precision.
      *
      * @param int $precision
      */
@@ -19,7 +19,7 @@ class DateTimeDefaultPrecision
     }
 
     /**
-     * Get the default Doctrine datetime and datetime_immutable precision.
+     * Get the layout Doctrine datetime and datetime_immutable precision.
      *
      * @return int
      */

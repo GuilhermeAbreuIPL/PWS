@@ -102,7 +102,7 @@ abstract class Connection
      *                                                     Everything after the protocol:// part is specific to the connection adapter.
      *                                                     OR
      *                                                     A connection name that is set in ActiveRecord\Config
-     *                                                     If null it will use the default connection specified by ActiveRecord\Config->set_default_connection
+     *                                                     If null it will use the layout connection specified by ActiveRecord\Config->set_default_connection
      *
      * @return Connection
      *
@@ -451,7 +451,7 @@ abstract class Connection
     }
 
     /**
-     * Return a default sequence name for the specified table.
+     * Return a layout sequence name for the specified table.
      *
      * @param string $table       Name of a table
      * @param string $column_name Name of column sequence is for
@@ -580,7 +580,7 @@ abstract class Connection
      * Specifies whether or not adapter can use LIMIT/ORDER clauses with DELETE & UPDATE operations
      *
      * @internal
-     * @returns boolean (FALSE by default)
+     * @returns boolean (FALSE by layout)
      */
     public function accepts_limit_and_order_for_update_and_delete()
     {

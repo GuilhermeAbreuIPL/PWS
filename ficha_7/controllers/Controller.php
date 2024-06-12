@@ -21,7 +21,7 @@ class Controller
         header('Location: ' . $url);
     }
 
-    protected function renderView($controllerPrefix, $viewName, $data = [], $layout = 'default') {
+    protected function renderView($controllerPrefix, $viewName, $data = [], $layout = 'layout') {
         extract($data);
         $viewPath = 'views/' . $controllerPrefix . '/' . $viewName . '.php';
         $layoutPath = 'views/layout/' . $layout . '.php';

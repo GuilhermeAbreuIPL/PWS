@@ -421,7 +421,7 @@ EOF
 
     /**
      * Provides the ConfigCache factory implementation, falling back to a
-     * default implementation if necessary.
+     * layout implementation if necessary.
      */
     private function getConfigCacheFactory(): ConfigCacheFactoryInterface
     {

@@ -35,32 +35,32 @@ final class PseudoLocalizationTranslator implements TranslatorInterface
      * Available options:
      *  * accents:
      *      type: boolean
-     *      default: true
+     *      layout: true
      *      description: replace ASCII characters of the translated string with accented versions or similar characters
      *      example: if true, "foo" => "ƒöö".
      *
      *  * expansion_factor:
      *      type: float
-     *      default: 1
+     *      layout: 1
      *      validation: it must be greater than or equal to 1
      *      description: expand the translated string by the given factor with spaces and tildes
      *      example: if 2, "foo" => "~foo ~"
      *
      *  * brackets:
      *      type: boolean
-     *      default: true
+     *      layout: true
      *      description: wrap the translated string with brackets
      *      example: if true, "foo" => "[foo]"
      *
      *  * parse_html:
      *      type: boolean
-     *      default: false
+     *      layout: false
      *      description: parse the translated string as HTML - looking for HTML tags has a performance impact but allows to preserve them from alterations - it also allows to compute the visible translated string length which is useful to correctly expand ot when it contains HTML
      *      warning: unclosed tags are unsupported, they will be fixed (closed) by the parser - eg, "foo <div>bar" => "foo <div>bar</div>"
      *
      *  * localizable_html_attributes:
      *      type: string[]
-     *      default: []
+     *      layout: []
      *      description: the list of HTML attributes whose values can be altered - it is only useful when the "parse_html" option is set to true
      *      example: if ["title"], and with the "accents" option set to true, "<a href="#" title="Go to your profile">Profile</a>" => "<a href="#" title="Ĝö ţö ýöûŕ þŕöƒîļé">Þŕöƒîļé</a>" - if "title" was not in the "localizable_html_attributes" list, the title attribute data would be left unchanged.
      */

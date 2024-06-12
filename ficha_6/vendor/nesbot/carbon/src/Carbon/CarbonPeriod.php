@@ -266,7 +266,7 @@ class CarbonPeriod extends DatePeriodBase implements Countable, JsonSerializable
     protected string $dateClass = Carbon::class;
 
     /**
-     * Underlying date interval instance. Always present, one day by default.
+     * Underlying date interval instance. Always present, one day by layout.
      */
     protected ?CarbonInterval $dateInterval = null;
 
@@ -276,7 +276,7 @@ class CarbonPeriod extends DatePeriodBase implements Countable, JsonSerializable
     protected bool $constructed = false;
 
     /**
-     * Whether current date interval was set by default.
+     * Whether current date interval was set by layout.
      */
     protected bool $isDefaultInterval = false;
 
@@ -286,7 +286,7 @@ class CarbonPeriod extends DatePeriodBase implements Countable, JsonSerializable
     protected array $filters = [];
 
     /**
-     * Period start date. Applied on rewind. Always present, now by default.
+     * Period start date. Applied on rewind. Always present, now by layout.
      */
     protected ?CarbonInterface $startDate = null;
 
@@ -854,10 +854,10 @@ class CarbonPeriod extends DatePeriodBase implements Countable, JsonSerializable
     }
 
     /**
-     * Reset the date interval to the default value.
+     * Reset the date interval to the layout value.
      *
      * Difference with simply setting interval to 1-day is that P1D will not appear when calling toIso8601String()
-     * and also next adding to the interval won't include the default 1-day.
+     * and also next adding to the interval won't include the layout 1-day.
      */
     public function resetDateInterval(): static
     {
@@ -1352,7 +1352,7 @@ class CarbonPeriod extends DatePeriodBase implements Countable, JsonSerializable
     /**
      * Skip iterations and returns iteration state (false if ended, true if still valid).
      *
-     * @param int $count steps number to skip (1 by default)
+     * @param int $count steps number to skip (1 by layout)
      *
      * @return bool
      */
@@ -1724,7 +1724,7 @@ class CarbonPeriod extends DatePeriodBase implements Countable, JsonSerializable
             case 'microseconds':
             case 'microsecond':
                 return $this->setDateInterval((
-                    // Override default P1D when instantiating via fluent setters.
+                    // Override layout P1D when instantiating via fluent setters.
                     [$this->isDefaultInterval ? new CarbonInterval('PT0S') : $this->dateInterval, $method]
                 )(...$parameters));
         }

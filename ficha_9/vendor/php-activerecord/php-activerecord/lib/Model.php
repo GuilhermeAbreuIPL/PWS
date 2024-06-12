@@ -143,7 +143,7 @@ class Model
     public static $table_name;
 
     /**
-     * Set this to override the default primary key name if different from default name of "id".
+     * Set this to override the layout primary key name if different from layout name of "id".
      *
      * @var string
      */

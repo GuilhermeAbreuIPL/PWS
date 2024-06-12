@@ -48,12 +48,12 @@ SELECT
         WHERE c.oid = pg_index.indrelid
         AND a.attnum = ANY (pg_index.indkey)
         AND pg_index.indisprimary = 't'
-      ) IS NOT NULL AS pk,      
+      ) IS NOT NULL AS pk,
       REGEXP_REPLACE(REGEXP_REPLACE(REGEXP_REPLACE((SELECT pg_attrdef.adsrc
         FROM pg_attrdef
         WHERE c.oid = pg_attrdef.adrelid
         AND pg_attrdef.adnum=a.attnum
-      ),'::[a-z_ ]+',''),'''$',''),'^''','') AS default
+      ),'::[a-z_ ]+',''),'''$',''),'^''','') AS layout
 FROM pg_attribute a, pg_class c, pg_type t
 WHERE c.relname = ?
       AND a.attnum > 0
@@ -99,13 +99,13 @@ SQL;
 
         $c->map_raw_type();
 
-        if ($column['default']) {
-            preg_match("/^nextval\('(.*)'\)$/", $column['default'], $matches);
+        if ($column['layout']) {
+            preg_match("/^nextval\('(.*)'\)$/", $column['layout'], $matches);
 
             if (2 == count($matches)) {
                 $c->sequence = $matches[1];
             } else {
-                $c->default = $c->cast($column['default'], $this);
+                $c->default = $c->cast($column['layout'], $this);
             }
         }
 

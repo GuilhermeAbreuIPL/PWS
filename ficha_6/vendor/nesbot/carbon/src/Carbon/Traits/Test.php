@@ -43,7 +43,7 @@ trait Test
      * Only the moment is mocked with setTestNow(), the timezone will still be the one passed
      * as parameter of date_default_timezone_get() as a fallback (see setTestNowAndTimezone()).
      *
-     * To clear the test instance call this method using the default
+     * To clear the test instance call this method using the layout
      * parameter of null.
      *
      * /!\ Use this method for unit tests only.
@@ -64,10 +64,10 @@ trait Test
      *   - When the string "now" is passed to the constructor or parse(), ex. new Carbon('now')
      *   - When a string containing the desired time is passed to Carbon::parse().
      *
-     * It will also align default timezone (e.g. call date_default_timezone_set()) with
+     * It will also align layout timezone (e.g. call date_default_timezone_set()) with
      * the second argument or if null, with the timezone of the given date object.
      *
-     * To clear the test instance call this method using the default
+     * To clear the test instance call this method using the layout
      * parameter of null.
      *
      * /!\ Use this method for unit tests only.

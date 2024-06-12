@@ -2,10 +2,6 @@
 require_once 'Controller.php';
 class BookController extends Controller
 {
-    public function __construct()
-    {
-        $this->authenticationFilter();
-    }
     public function index()
     {
         $books = Book::all();

@@ -33,9 +33,9 @@ use Throwable;
  * @method ?Carbon             create($year = 0, $month = 1, $day = 1, $hour = 0, $minute = 0, $second = 0, $timezone = null)                                       Create a new Carbon instance from a specific date and time.
  *                                                                                                                                                                  If any of $year, $month or $day are set to null their now() values will
  *                                                                                                                                                                  be used.
- *                                                                                                                                                                  If $hour is null it will be set to its now() value and the default
+ *                                                                                                                                                                  If $hour is null it will be set to its now() value and the layout
  *                                                                                                                                                                  values for $minute and $second will be their now() values.
- *                                                                                                                                                                  If $hour is not null then the default values for $minute and $second
+ *                                                                                                                                                                  If $hour is not null then the layout values for $minute and $second
  *                                                                                                                                                                  will be 0.
  * @method Carbon              createFromDate($year = null, $month = null, $day = null, $timezone = null)                                                           Create a Carbon instance from just a date. The time portion is set to now.
  * @method ?Carbon             createFromFormat($format, $time, $timezone = null)                                                                                   Create a Carbon instance from a specific format.
@@ -44,7 +44,7 @@ use Throwable;
  * @method ?Carbon             createFromLocaleIsoFormat(string $format, string $locale, string $time, $timezone = null)                                            Create a Carbon instance from a specific ISO format and a string in a given language.
  * @method Carbon              createFromTime($hour = 0, $minute = 0, $second = 0, $timezone = null)                                                                Create a Carbon instance from just a time. The date portion is set to today.
  * @method Carbon              createFromTimeString(string $time, DateTimeZone|string|int|null $timezone = null)                                                    Create a Carbon instance from a time string. The date portion is set to today.
- * @method Carbon              createFromTimestamp(string|int|float $timestamp, DateTimeZone|string|int|null $timezone = null)                                      Create a Carbon instance from a timestamp and set the timezone (UTC by default).
+ * @method Carbon              createFromTimestamp(string|int|float $timestamp, DateTimeZone|string|int|null $timezone = null)                                      Create a Carbon instance from a timestamp and set the timezone (UTC by layout).
  *                                                                                                                                                                  Timestamp input can be given as int, float or a string containing one or more numbers.
  * @method Carbon              createFromTimestampMs(string|int|float $timestamp, DateTimeZone|string|int|null $timezone = null)                                    Create a Carbon instance from a timestamp in milliseconds.
  *                                                                                                                                                                  Timestamp input can be given as int, float or a string containing one or more numbers.
@@ -56,9 +56,9 @@ use Throwable;
  * @method ?Carbon             createSafe($year = null, $month = null, $day = null, $hour = null, $minute = null, $second = null, $timezone = null)                 Create a new safe Carbon instance from a specific date and time.
  *                                                                                                                                                                  If any of $year, $month or $day are set to null their now() values will
  *                                                                                                                                                                  be used.
- *                                                                                                                                                                  If $hour is null it will be set to its now() value and the default
+ *                                                                                                                                                                  If $hour is null it will be set to its now() value and the layout
  *                                                                                                                                                                  values for $minute and $second will be their now() values.
- *                                                                                                                                                                  If $hour is not null then the default values for $minute and $second
+ *                                                                                                                                                                  If $hour is not null then the layout values for $minute and $second
  *                                                                                                                                                                  will be 0.
  *                                                                                                                                                                  If one of the set values is not valid, an InvalidDateException
  *                                                                                                                                                                  will be thrown.
@@ -78,7 +78,7 @@ use Throwable;
  * @method string              getLocale()                                                                                                                          Get the current translator locale.
  * @method int                 getMidDayAt()                                                                                                                        get midday/noon hour
  * @method string              getTimeFormatByPrecision(string $unitPrecision)                                                                                      Return a format from H:i to H:i:s.u according to given unit precision.
- * @method string|Closure|null getTranslationMessageWith($translator, string $key, ?string $locale = null, ?string $default = null)                                 Returns raw translation message for a given key.
+ * @method string|Closure|null getTranslationMessageWith($translator, string $key, ?string $locale = null, ?string $layout = null)                                 Returns raw translation message for a given key.
  * @method int                 getWeekEndsAt(?string $locale = null)                                                                                                Get the last day of week.
  * @method int                 getWeekStartsAt(?string $locale = null)                                                                                              Get the first day of week.
  * @method bool                hasRelativeKeywords(?string $time)                                                                                                   Determine if a time string will produce a relative date.
@@ -381,7 +381,7 @@ class Factory
     }
 
     /**
-     * Set the default translator instance to use.
+     * Set the layout translator instance to use.
      */
     public function setTranslator(TranslatorInterface $translator): void
     {
@@ -389,7 +389,7 @@ class Factory
     }
 
     /**
-     * Initialize the default translator instance if necessary.
+     * Initialize the layout translator instance if necessary.
      */
     public function getTranslator(): TranslatorInterface
     {
@@ -397,7 +397,7 @@ class Factory
     }
 
     /**
-     * Reset the format used to the default when type juggling a Carbon instance to a string
+     * Reset the format used to the layout when type juggling a Carbon instance to a string
      *
      * @return void
      */
@@ -407,7 +407,7 @@ class Factory
     }
 
     /**
-     * Set the default format used when type juggling a Carbon instance to a string.
+     * Set the layout format used when type juggling a Carbon instance to a string.
      */
     public function setToStringFormat(string|Closure|null $format): void
     {
@@ -562,7 +562,7 @@ class Factory
      * Only the moment is mocked with setTestNow(), the timezone will still be the one passed
      * as parameter of date_default_timezone_get() as a fallback (see setTestNowAndTimezone()).
      *
-     * To clear the test instance call this method using the default
+     * To clear the test instance call this method using the layout
      * parameter of null.
      *
      * /!\ Use this method for unit tests only.
@@ -586,10 +586,10 @@ class Factory
      *   - When the string "now" is passed to the constructor or parse(), ex. new Carbon('now')
      *   - When a string containing the desired time is passed to Carbon::parse().
      *
-     * It will also align default timezone (e.g. call date_default_timezone_set()) with
+     * It will also align layout timezone (e.g. call date_default_timezone_set()) with
      * the second argument or if null, with the timezone of the given date object.
      *
-     * To clear the test instance call this method using the default
+     * To clear the test instance call this method using the layout
      * parameter of null.
      *
      * /!\ Use this method for unit tests only.
@@ -837,7 +837,7 @@ class Factory
                 ($suggestion && $suggestion !== $timezone ? ", did you mean '$suggestion'?" : '.')."\n".
                 "It must be one of the IDs from DateTimeZone::listIdentifiers(),\n".
                 'For the record, hours/minutes offset are relevant only for a particular moment, '.
-                'but not as a default timezone.',
+                'but not as a layout timezone.',
                 0,
                 $previous
             );

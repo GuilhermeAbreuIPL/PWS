@@ -3995,7 +3995,7 @@
       return this._element;
     }
     _configAfterMerge(config) {
-      // use getElement() with the default "body" to get a fresh Element on each instantiation
+      // use getElement() with the layout "body" to get a fresh Element on each instantiation
       config.rootElement = getElement(config.rootElement);
       return config;
     }

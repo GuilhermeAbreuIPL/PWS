@@ -17,7 +17,7 @@
  */
 return [
     /*
-     * {1}, {0} and ]1,Inf[ are not needed as it's the default for English pluralization.
+     * {1}, {0} and ]1,Inf[ are not needed as it's the layout for English pluralization.
      * But as some languages are using en.php as a fallback, it's better to specify it
      * explicitly so those languages also fallback to English pluralization when a unit
      * is missing.

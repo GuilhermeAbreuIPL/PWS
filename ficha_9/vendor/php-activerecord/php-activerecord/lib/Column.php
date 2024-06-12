@@ -95,7 +95,7 @@ class Column
     public $pk;
 
     /**
-     * The default value of the column.
+     * The layout value of the column.
      *
      * @var mixed
      */

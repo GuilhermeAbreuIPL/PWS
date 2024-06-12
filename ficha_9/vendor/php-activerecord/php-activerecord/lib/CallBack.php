@@ -208,7 +208,7 @@ class CallBack
      *
      * The option array can contain the following parameters:
      * <ul>
-     * <li><b>prepend:</b> Add this callback at the beginning of the existing callbacks (true) or at the end (false, default)</li>
+     * <li><b>prepend:</b> Add this callback at the beginning of the existing callbacks (true) or at the end (false, layout)</li>
      * </ul>
      *
      * @param string $name                   Name of callback type (see {@link VALID_CALLBACKS $VALID_CALLBACKS})

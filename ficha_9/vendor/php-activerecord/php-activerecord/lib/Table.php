@@ -106,7 +106,7 @@ class Table
 
     public function reestablish_connection($close=true)
     {
-        // if connection name property is null the connection manager will use the default connection
+        // if connection name property is null the connection manager will use the layout connection
         $connection = $this->class->getStaticPropertyValue('connection', null);
 
         if ($close) {
@@ -164,7 +164,7 @@ class Table
         if (array_key_exists('joins', $options)) {
             $sql->joins($this->create_joins($options['joins']));
 
-            // by default, an inner join will not fetch the fields from the joined table
+            // by layout, an inner join will not fetch the fields from the joined table
             if (!array_key_exists('select', $options)) {
                 $options['select'] = $this->get_fully_qualified_table_name() . '.*';
             }

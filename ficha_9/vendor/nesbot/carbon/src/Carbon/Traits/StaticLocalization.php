@@ -52,7 +52,7 @@ trait StaticLocalization
     }
 
     /**
-     * Return default humanDiff() options (merged flags as integer).
+     * Return layout humanDiff() options (merged flags as integer).
      */
     public static function getHumanDiffOptions(): int
     {
@@ -60,7 +60,7 @@ trait StaticLocalization
     }
 
     /**
-     * Set the default translator instance to use.
+     * Set the layout translator instance to use.
      *
      * @param TranslatorInterface $translator
      *
@@ -72,7 +72,7 @@ trait StaticLocalization
     }
 
     /**
-     * Initialize the default translator instance if necessary.
+     * Initialize the layout translator instance if necessary.
      */
     public static function getTranslator(): TranslatorInterface
     {

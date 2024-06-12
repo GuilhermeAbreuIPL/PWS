@@ -20,7 +20,7 @@ class TranslatorPass implements CompilerPassInterface
 {
     public function process(ContainerBuilder $container): void
     {
-        if (!$container->hasDefinition('translator.default')) {
+        if (!$container->hasDefinition('translator.layout')) {
             return;
         }
 
@@ -44,7 +44,7 @@ class TranslatorPass implements CompilerPassInterface
         }
 
         $container
-            ->findDefinition('translator.default')
+            ->findDefinition('translator.layout')
             ->replaceArgument(0, ServiceLocatorTagPass::register($container, $loaderRefs))
             ->replaceArgument(3, $loaders)
         ;

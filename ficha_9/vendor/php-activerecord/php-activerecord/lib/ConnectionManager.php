@@ -20,7 +20,7 @@ class ConnectionManager extends Singleton
     private static $connections = [];
 
     /**
-     * If $name is null then the default connection will be returned.
+     * If $name is null then the layout connection will be returned.
      *
      * @see Config
      *

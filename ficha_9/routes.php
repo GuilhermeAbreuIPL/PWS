@@ -5,6 +5,7 @@
     require_once 'controllers/HomeController.php';
     require_once 'controllers/BookController.php';
     require_once 'controllers/ChapterController.php';
+    require_once 'controllers/GenreController.php';
 
     return [
         'defaultRoute' => ['GET', 'AuthController', 'index'],
@@ -39,7 +40,18 @@
             'create' => ['GET', 'ChapterController', 'create'],
             'store' => ['POST', 'ChapterController', 'store'],
             'delete' => ['GET', 'ChapterController', 'delete'],
-            'edit' => ['GET', 'ChapterController', 'edit']
+            'edit' => ['GET', 'ChapterController', 'edit'],
+            'update' => ['POST', 'ChapterController', 'update']
+        ],
+
+        'genre' => [
+            'index' => ['GET', 'GenreController', 'index'],
+            'show' => ['GET', 'GenreController', 'show'],
+            'create' => ['GET', 'GenreController', 'create'],
+            'store' => ['POST', 'GenreController', 'store'],
+            'delete' => ['GET', 'GenreController', 'delete'],
+            'edit' => ['GET', 'GenreController', 'edit'],
+            'update' => ['POST', 'GenreController', 'update']
         ],
 
 

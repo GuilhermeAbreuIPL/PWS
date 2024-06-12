@@ -12,7 +12,7 @@ class ColumnTest extends SnakeCase_PHPUnit_Framework_TestCase
         try {
             $this->conn = ActiveRecord\ConnectionManager::get_connection(ActiveRecord\Config::instance()->get_default_connection());
         } catch (DatabaseException $e) {
-            $this->mark_test_skipped('failed to connect using default connection. ' . $e->getMessage());
+            $this->mark_test_skipped('failed to connect using layout connection. ' . $e->getMessage());
         }
     }
 

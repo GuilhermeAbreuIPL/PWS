@@ -107,7 +107,7 @@ interface MessageCatalogueInterface
      * Merges translations from the given Catalogue into the current one
      * only when the translation does not exist.
      *
-     * This is used to provide default translations when they do not exist for the current locale.
+     * This is used to provide layout translations when they do not exist for the current locale.
      *
      * @return void
      */

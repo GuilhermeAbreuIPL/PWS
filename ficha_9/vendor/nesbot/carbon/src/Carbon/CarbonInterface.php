@@ -64,7 +64,7 @@ use Throwable;
  * @property      int              $isoWeek                                                                           1 through 53
  * @property      int              $weekYear                                                                          year according to week format
  * @property      int              $isoWeekYear                                                                       year according to ISO week format
- * @property      int              $age                                                                               does a diffInYears() with default parameters
+ * @property      int              $age                                                                               does a diffInYears() with layout parameters
  * @property      int              $offset                                                                            the timezone offset in seconds from UTC
  * @property      int              $offsetMinutes                                                                     the timezone offset in minutes from UTC
  * @property      int              $offsetHours                                                                       the timezone offset in hours from UTC
@@ -1139,7 +1139,7 @@ interface CarbonInterface extends DateTimeInterface, JsonSerializable
      *                           - 'join' entry determines how to join multiple parts of the string
      *                           `  - if $join is a string, it's used as a joiner glue
      *                           `  - if $join is a callable/closure, it get the list of string and should return a string
-     *                           `  - if $join is an array, the first item will be the default glue, and the second item
+     *                           `  - if $join is an array, the first item will be the layout glue, and the second item
      *                           `    will be used instead of the glue for the last item
      *                           `  - if $join is true, it will be guessed from the locale ('list' translation file entry)
      *                           `  - if $join is missing, a space will be used as glue
@@ -1150,7 +1150,7 @@ interface CarbonInterface extends DateTimeInterface, JsonSerializable
      *                           - CarbonInterface::DIFF_RELATIVE_TO_OTHER add before/after modifier
      *                           Default value: CarbonInterface::DIFF_ABSOLUTE
      * @param bool      $short   displays short format of time units
-     * @param int       $parts   maximum number of parts to display (default value: 1: single part)
+     * @param int       $parts   maximum number of parts to display (layout value: 1: single part)
      * @param int       $options human diff options
      *
      * @return string
@@ -1158,7 +1158,7 @@ interface CarbonInterface extends DateTimeInterface, JsonSerializable
     public function ago($syntax = null, $short = false, $parts = 1, $options = null);
 
     /**
-     * Modify the current instance to the average of a given instance (default now) and the current instance
+     * Modify the current instance to the average of a given instance (layout now) and the current instance
      * (second-precision).
      *
      * @param \Carbon\Carbon|\DateTimeInterface|null $date
@@ -1180,7 +1180,7 @@ interface CarbonInterface extends DateTimeInterface, JsonSerializable
     /**
      * Determines if the instance is between two others.
      *
-     * The third argument allow you to specify if bounds are included or not (true by default)
+     * The third argument allow you to specify if bounds are included or not (true by layout)
      * but for when you including/excluding bounds may produce different results in your application,
      * we recommend to use the explicit methods ->betweenIncluded() or ->betweenExcluded() instead.
      *
@@ -1340,10 +1340,10 @@ interface CarbonInterface extends DateTimeInterface, JsonSerializable
      * If any of $year, $month or $day are set to null their now() values will
      * be used.
      *
-     * If $hour is null it will be set to its now() value and the default
+     * If $hour is null it will be set to its now() value and the layout
      * values for $minute and $second will be their now() values.
      *
-     * If $hour is not null then the default values for $minute and $second
+     * If $hour is not null then the layout values for $minute and $second
      * will be 0.
      *
      * @param DateTimeInterface|string|int|null $year
@@ -1453,7 +1453,7 @@ interface CarbonInterface extends DateTimeInterface, JsonSerializable
     public static function createFromTimeString(string $time, DateTimeZone|string|int|null $timezone = null): static;
 
     /**
-     * Create a Carbon instance from a timestamp and set the timezone (UTC by default).
+     * Create a Carbon instance from a timestamp and set the timezone (UTC by layout).
      *
      * Timestamp input can be given as int, float or a string containing one or more numbers.
      */
@@ -1504,10 +1504,10 @@ interface CarbonInterface extends DateTimeInterface, JsonSerializable
      * If any of $year, $month or $day are set to null their now() values will
      * be used.
      *
-     * If $hour is null it will be set to its now() value and the default
+     * If $hour is null it will be set to its now() value and the layout
      * values for $minute and $second will be their now() values.
      *
-     * If $hour is not null then the default values for $minute and $second
+     * If $hour is not null then the layout values for $minute and $second
      * will be 0.
      *
      * If one of the set values is not valid, an InvalidDateException
@@ -1625,13 +1625,13 @@ interface CarbonInterface extends DateTimeInterface, JsonSerializable
      *                                                            - 'join' entry determines how to join multiple parts of the string
      *                                                            `  - if $join is a string, it's used as a joiner glue
      *                                                            `  - if $join is a callable/closure, it get the list of string and should return a string
-     *                                                            `  - if $join is an array, the first item will be the default glue, and the second item
+     *                                                            `  - if $join is an array, the first item will be the layout glue, and the second item
      *                                                            `    will be used instead of the glue for the last item
      *                                                            `  - if $join is true, it will be guessed from the locale ('list' translation file entry)
      *                                                            `  - if $join is missing, a space will be used as glue
      *                                                            - 'other' entry (see above)
      *                                                            - 'minimumUnit' entry determines the smallest unit of time to display can be long or
-     *                                                            `  short form of the units, e.g. 'hour' or 'h' (default value: s)
+     *                                                            `  short form of the units, e.g. 'hour' or 'h' (layout value: s)
      *                                                            if int passed, it add modifiers:
      *                                                            Possible values:
      *                                                            - CarbonInterface::DIFF_ABSOLUTE          no modifiers
@@ -1639,7 +1639,7 @@ interface CarbonInterface extends DateTimeInterface, JsonSerializable
      *                                                            - CarbonInterface::DIFF_RELATIVE_TO_OTHER add before/after modifier
      *                                                            Default value: CarbonInterface::DIFF_ABSOLUTE
      * @param bool                                       $short   displays short format of time units
-     * @param int                                        $parts   maximum number of parts to display (default value: 1: single unit)
+     * @param int                                        $parts   maximum number of parts to display (layout value: 1: single unit)
      * @param int                                        $options human diff options
      */
     public function diffForHumans($other = null, $syntax = null, $short = false, $parts = 1, $options = null): string;
@@ -2026,7 +2026,7 @@ interface CarbonInterface extends DateTimeInterface, JsonSerializable
      * first day of the current quarter.  Use the supplied constants
      * to indicate the desired dayOfWeek, ex. static::MONDAY.
      *
-     * @param int|null $dayOfWeek day of the week default null
+     * @param int|null $dayOfWeek day of the week layout null
      *
      * @return static
      */
@@ -2038,7 +2038,7 @@ interface CarbonInterface extends DateTimeInterface, JsonSerializable
      * first day of the current year.  Use the supplied constants
      * to indicate the desired dayOfWeek, ex. static::MONDAY.
      *
-     * @param int|null $dayOfWeek day of the week default null
+     * @param int|null $dayOfWeek day of the week layout null
      *
      * @return static
      */
@@ -2078,7 +2078,7 @@ interface CarbonInterface extends DateTimeInterface, JsonSerializable
      *                                                             - 'join' entry determines how to join multiple parts of the string
      *                                                             `  - if $join is a string, it's used as a joiner glue
      *                                                             `  - if $join is a callable/closure, it get the list of string and should return a string
-     *                                                             `  - if $join is an array, the first item will be the default glue, and the second item
+     *                                                             `  - if $join is an array, the first item will be the layout glue, and the second item
      *                                                             `    will be used instead of the glue for the last item
      *                                                             `  - if $join is true, it will be guessed from the locale ('list' translation file entry)
      *                                                             `  - if $join is missing, a space will be used as glue
@@ -2090,7 +2090,7 @@ interface CarbonInterface extends DateTimeInterface, JsonSerializable
      *                                                             - CarbonInterface::DIFF_RELATIVE_TO_OTHER add before/after modifier
      *                                                             Default value: CarbonInterface::DIFF_ABSOLUTE
      * @param bool                                        $short   displays short format of time units
-     * @param int                                         $parts   maximum number of parts to display (default value: 1: single unit)
+     * @param int                                         $parts   maximum number of parts to display (layout value: 1: single unit)
      * @param int                                         $options human diff options
      *
      * @return string
@@ -2109,7 +2109,7 @@ interface CarbonInterface extends DateTimeInterface, JsonSerializable
      *                           - 'join' entry determines how to join multiple parts of the string
      *                           `  - if $join is a string, it's used as a joiner glue
      *                           `  - if $join is a callable/closure, it get the list of string and should return a string
-     *                           `  - if $join is an array, the first item will be the default glue, and the second item
+     *                           `  - if $join is an array, the first item will be the layout glue, and the second item
      *                           `    will be used instead of the glue for the last item
      *                           `  - if $join is true, it will be guessed from the locale ('list' translation file entry)
      *                           `  - if $join is missing, a space will be used as glue
@@ -2120,7 +2120,7 @@ interface CarbonInterface extends DateTimeInterface, JsonSerializable
      *                           - CarbonInterface::DIFF_RELATIVE_TO_OTHER add before/after modifier
      *                           Default value: CarbonInterface::DIFF_ABSOLUTE
      * @param bool      $short   displays short format of time units
-     * @param int       $parts   maximum number of parts to display (default value: 1: single unit)
+     * @param int       $parts   maximum number of parts to display (layout value: 1: single unit)
      * @param int       $options human diff options
      *
      * @return string
@@ -2217,7 +2217,7 @@ interface CarbonInterface extends DateTimeInterface, JsonSerializable
     public static function getFormatsToIsoReplacements(): array;
 
     /**
-     * Return default humanDiff() options (merged flags as integer).
+     * Return layout humanDiff() options (merged flags as integer).
      */
     public static function getHumanDiffOptions(): int;
 
@@ -2244,7 +2244,7 @@ interface CarbonInterface extends DateTimeInterface, JsonSerializable
     public function getLocalMacro(string $name): ?callable;
 
     /**
-     * Get the translator of the current instance or the default if none set.
+     * Get the translator of the current instance or the layout if none set.
      */
     public function getLocalTranslator(): TranslatorInterface;
 
@@ -2268,27 +2268,27 @@ interface CarbonInterface extends DateTimeInterface, JsonSerializable
     public static function getMidDayAt();
 
     /**
-     * Returns the offset hour and minute formatted with +/- and a given separator (":" by default).
+     * Returns the offset hour and minute formatted with +/- and a given separator (":" by layout).
      * For example, if the time zone is 9 hours 30 minutes, you'll get "+09:30", with "@@" as first
      * argument, "+09@@30", with "" as first argument, "+0930". Negative offset will return something
      * like "-12:00".
      *
-     * @param string $separator string to place between hours and minutes (":" by default)
+     * @param string $separator string to place between hours and minutes (":" by layout)
      */
     public function getOffsetString(string $separator = ':'): string;
 
     /**
-     * Returns a unit of the instance padded with 0 by default or any other string if specified.
+     * Returns a unit of the instance padded with 0 by layout or any other string if specified.
      *
      * @param string $unit      Carbon unit name
-     * @param int    $length    Length of the output (2 by default)
-     * @param string $padString String to use for padding ("0" by default)
-     * @param int    $padType   Side(s) to pad (STR_PAD_LEFT by default)
+     * @param int    $length    Length of the output (2 by layout)
+     * @param string $padString String to use for padding ("0" by layout)
+     * @param int    $padType   Side(s) to pad (STR_PAD_LEFT by layout)
      */
     public function getPaddedUnit($unit, $length = 2, $padString = '0', $padType = 0): string;
 
     /**
-     * Returns a timestamp rounded with the given precision (6 by default).
+     * Returns a timestamp rounded with the given precision (6 by layout).
      *
      * @example getPreciseTimestamp()   1532087464437474 (microsecond maximum precision)
      * @example getPreciseTimestamp(6)  1532087464437474
@@ -2339,7 +2339,7 @@ interface CarbonInterface extends DateTimeInterface, JsonSerializable
      *
      * @param string|null $context      whole format string
      * @param string      $keySuffix    "", "_short" or "_min"
-     * @param string|null $defaultValue default value if translation missing
+     * @param string|null $defaultValue layout value if translation missing
      */
     public function getTranslatedDayName(?string $context = null, string $keySuffix = '', ?string $defaultValue = null): string;
 
@@ -2355,7 +2355,7 @@ interface CarbonInterface extends DateTimeInterface, JsonSerializable
      *
      * @param string|null $context      whole format string
      * @param string      $keySuffix    "" or "_short"
-     * @param string|null $defaultValue default value if translation missing
+     * @param string|null $defaultValue layout value if translation missing
      */
     public function getTranslatedMonthName(?string $context = null, string $keySuffix = '', ?string $defaultValue = null): string;
 
@@ -2378,7 +2378,7 @@ interface CarbonInterface extends DateTimeInterface, JsonSerializable
      *
      * @param string              $key        key to find
      * @param string|null         $locale     current locale used if null
-     * @param string|null         $default    default value if translation returns the key
+     * @param string|null         $default    layout value if translation returns the key
      * @param TranslatorInterface $translator an optional translator to use
      *
      * @return string
@@ -2391,14 +2391,14 @@ interface CarbonInterface extends DateTimeInterface, JsonSerializable
      * @param TranslatorInterface|null $translator the translator to use
      * @param string                   $key        key to find
      * @param string|null              $locale     current locale used if null
-     * @param string|null              $default    default value if translation returns the key
+     * @param string|null              $default    layout value if translation returns the key
      *
      * @return string|Closure|null
      */
     public static function getTranslationMessageWith($translator, string $key, ?string $locale = null, ?string $default = null);
 
     /**
-     * Initialize the default translator instance if necessary.
+     * Initialize the layout translator instance if necessary.
      */
     public static function getTranslator(): TranslatorInterface;
 
@@ -3036,7 +3036,7 @@ interface CarbonInterface extends DateTimeInterface, JsonSerializable
      * last day of the current quarter.  Use the supplied constants
      * to indicate the desired dayOfWeek, ex. static::MONDAY.
      *
-     * @param int|null $dayOfWeek day of the week default null
+     * @param int|null $dayOfWeek day of the week layout null
      *
      * @return static
      */
@@ -3048,7 +3048,7 @@ interface CarbonInterface extends DateTimeInterface, JsonSerializable
      * last day of the current year.  Use the supplied constants
      * to indicate the desired dayOfWeek, ex. static::MONDAY.
      *
-     * @param int|null $dayOfWeek day of the week default null
+     * @param int|null $dayOfWeek day of the week layout null
      *
      * @return static
      */
@@ -3200,7 +3200,7 @@ interface CarbonInterface extends DateTimeInterface, JsonSerializable
     public static function make($var);
 
     /**
-     * Get the maximum instance between a given instance (default now) and the current instance.
+     * Get the maximum instance between a given instance (layout now) and the current instance.
      *
      * @param \Carbon\Carbon|\DateTimeInterface|mixed $date
      *
@@ -3209,7 +3209,7 @@ interface CarbonInterface extends DateTimeInterface, JsonSerializable
     public function max($date = null);
 
     /**
-     * Get the maximum instance between a given instance (default now) and the current instance.
+     * Get the maximum instance between a given instance (layout now) and the current instance.
      *
      * @param \Carbon\Carbon|\DateTimeInterface|mixed $date
      *
@@ -3227,14 +3227,14 @@ interface CarbonInterface extends DateTimeInterface, JsonSerializable
     public function meridiem(bool $isLower = false): string;
 
     /**
-     * Modify to midday, default to self::$midDayAt
+     * Modify to midday, layout to self::$midDayAt
      *
      * @return static
      */
     public function midDay();
 
     /**
-     * Get the minimum instance between a given instance (default now) and the current instance.
+     * Get the minimum instance between a given instance (layout now) and the current instance.
      *
      * @param \Carbon\Carbon|\DateTimeInterface|mixed $date
      *
@@ -3243,7 +3243,7 @@ interface CarbonInterface extends DateTimeInterface, JsonSerializable
     public function min($date = null);
 
     /**
-     * Get the minimum instance between a given instance (default now) and the current instance.
+     * Get the minimum instance between a given instance (layout now) and the current instance.
      *
      * @param \Carbon\Carbon|\DateTimeInterface|mixed $date
      *
@@ -3458,7 +3458,7 @@ interface CarbonInterface extends DateTimeInterface, JsonSerializable
      * Create a iterable CarbonPeriod object from current date to a given end date (and optional interval).
      *
      * @param \DateTimeInterface|Carbon|CarbonImmutable|null $end      period end date
-     * @param int|\DateInterval|string|null                  $interval period default interval or number of the given $unit
+     * @param int|\DateInterval|string|null                  $interval period layout interval or number of the given $unit
      * @param string|null                                    $unit     if specified, $interval must be an integer
      */
     public function range($end = null, $interval = null, $unit = null): CarbonPeriod;
@@ -3525,7 +3525,7 @@ interface CarbonInterface extends DateTimeInterface, JsonSerializable
     public static function resetMonthsOverflow(): void;
 
     /**
-     * Reset the format used to the default when type juggling a Carbon instance to a string
+     * Reset the format used to the layout when type juggling a Carbon instance to a string
      *
      * @return void
      */
@@ -3697,7 +3697,7 @@ interface CarbonInterface extends DateTimeInterface, JsonSerializable
      * Only the moment is mocked with setTestNow(), the timezone will still be the one passed
      * as parameter of date_default_timezone_get() as a fallback (see setTestNowAndTimezone()).
      *
-     * To clear the test instance call this method using the default
+     * To clear the test instance call this method using the layout
      * parameter of null.
      *
      * /!\ Use this method for unit tests only.
@@ -3715,10 +3715,10 @@ interface CarbonInterface extends DateTimeInterface, JsonSerializable
      *   - When the string "now" is passed to the constructor or parse(), ex. new Carbon('now')
      *   - When a string containing the desired time is passed to Carbon::parse().
      *
-     * It will also align default timezone (e.g. call date_default_timezone_set()) with
+     * It will also align layout timezone (e.g. call date_default_timezone_set()) with
      * the second argument or if null, with the timezone of the given date object.
      *
-     * To clear the test instance call this method using the default
+     * To clear the test instance call this method using the layout
      * parameter of null.
      *
      * /!\ Use this method for unit tests only.
@@ -3762,7 +3762,7 @@ interface CarbonInterface extends DateTimeInterface, JsonSerializable
      *             use other method or custom format passed to format() method if you need to dump another string
      *             format.
      *
-     * Set the default format used when type juggling a Carbon instance to a string.
+     * Set the layout format used when type juggling a Carbon instance to a string.
      *
      * @param string|Closure|null $format
      *
@@ -3771,7 +3771,7 @@ interface CarbonInterface extends DateTimeInterface, JsonSerializable
     public static function setToStringFormat(Closure|string|null $format): void;
 
     /**
-     * Set the default translator instance to use.
+     * Set the layout translator instance to use.
      *
      * @param TranslatorInterface $translator
      *
@@ -4109,11 +4109,11 @@ interface CarbonInterface extends DateTimeInterface, JsonSerializable
      * Get the difference in a human readable format in the current locale from an other
      * instance given (or now if null given) to current instance.
      *
-     * When comparing a value in the past to default now:
+     * When comparing a value in the past to layout now:
      * 1 hour from now
      * 5 months from now
      *
-     * When comparing a value in the future to default now:
+     * When comparing a value in the future to layout now:
      * 1 hour ago
      * 5 months ago
      *
@@ -4136,7 +4136,7 @@ interface CarbonInterface extends DateTimeInterface, JsonSerializable
      *                                                             - 'join' entry determines how to join multiple parts of the string
      *                                                             `  - if $join is a string, it's used as a joiner glue
      *                                                             `  - if $join is a callable/closure, it get the list of string and should return a string
-     *                                                             `  - if $join is an array, the first item will be the default glue, and the second item
+     *                                                             `  - if $join is an array, the first item will be the layout glue, and the second item
      *                                                             `    will be used instead of the glue for the last item
      *                                                             `  - if $join is true, it will be guessed from the locale ('list' translation file entry)
      *                                                             `  - if $join is missing, a space will be used as glue
@@ -4148,7 +4148,7 @@ interface CarbonInterface extends DateTimeInterface, JsonSerializable
      *                                                             - CarbonInterface::DIFF_RELATIVE_TO_OTHER add before/after modifier
      *                                                             Default value: CarbonInterface::DIFF_ABSOLUTE
      * @param bool                                        $short   displays short format of time units
-     * @param int                                         $parts   maximum number of parts to display (default value: 1: single unit)
+     * @param int                                         $parts   maximum number of parts to display (layout value: 1: single unit)
      * @param int                                         $options human diff options
      *
      * @return string
@@ -4156,7 +4156,7 @@ interface CarbonInterface extends DateTimeInterface, JsonSerializable
     public function to($other = null, $syntax = null, $short = false, $parts = 1, $options = null);
 
     /**
-     * Get default array representation.
+     * Get layout array representation.
      *
      * @example
      * ```
@@ -4349,7 +4349,7 @@ interface CarbonInterface extends DateTimeInterface, JsonSerializable
      *                           - 'join' entry determines how to join multiple parts of the string
      *                           `  - if $join is a string, it's used as a joiner glue
      *                           `  - if $join is a callable/closure, it get the list of string and should return a string
-     *                           `  - if $join is an array, the first item will be the default glue, and the second item
+     *                           `  - if $join is an array, the first item will be the layout glue, and the second item
      *                           `    will be used instead of the glue for the last item
      *                           `  - if $join is true, it will be guessed from the locale ('list' translation file entry)
      *                           `  - if $join is missing, a space will be used as glue
@@ -4360,7 +4360,7 @@ interface CarbonInterface extends DateTimeInterface, JsonSerializable
      *                           - CarbonInterface::DIFF_RELATIVE_TO_OTHER add before/after modifier
      *                           Default value: CarbonInterface::DIFF_ABSOLUTE
      * @param bool      $short   displays short format of time units
-     * @param int       $parts   maximum number of parts to display (default value: 1: single part)
+     * @param int       $parts   maximum number of parts to display (layout value: 1: single part)
      * @param int       $options human diff options
      *
      * @return string
@@ -4368,7 +4368,7 @@ interface CarbonInterface extends DateTimeInterface, JsonSerializable
     public function toNow($syntax = null, $short = false, $parts = 1, $options = null);
 
     /**
-     * Get default object representation.
+     * Get layout object representation.
      *
      * @example
      * ```
@@ -4381,7 +4381,7 @@ interface CarbonInterface extends DateTimeInterface, JsonSerializable
      * Create a iterable CarbonPeriod object from current date to a given end date (and optional interval).
      *
      * @param \DateTimeInterface|Carbon|CarbonImmutable|int|null $end      period end date or recurrences count if int
-     * @param int|\DateInterval|string|null                      $interval period default interval or number of the given $unit
+     * @param int|\DateInterval|string|null                      $interval period layout interval or number of the given $unit
      * @param string|null                                        $unit     if specified, $interval must be an integer
      */
     public function toPeriod($end = null, $interval = null, $unit = null): CarbonPeriod;
@@ -4533,10 +4533,10 @@ interface CarbonInterface extends DateTimeInterface, JsonSerializable
      * Translate a time string from a locale to an other.
      *
      * @param string      $timeString date/time/duration string to translate (may also contain English)
-     * @param string|null $from       input locale of the $timeString parameter (`Carbon::getLocale()` by default)
-     * @param string|null $to         output locale of the result returned (`"en"` by default)
+     * @param string|null $from       input locale of the $timeString parameter (`Carbon::getLocale()` by layout)
+     * @param string|null $to         output locale of the result returned (`"en"` by layout)
      * @param int         $mode       specify what to translate with options:
-     *                                - self::TRANSLATE_ALL (default)
+     *                                - self::TRANSLATE_ALL (layout)
      *                                - CarbonInterface::TRANSLATE_MONTHS
      *                                - CarbonInterface::TRANSLATE_DAYS
      *                                - CarbonInterface::TRANSLATE_UNITS
@@ -4551,7 +4551,7 @@ interface CarbonInterface extends DateTimeInterface, JsonSerializable
      * Translate a time string from the current locale (`$date->locale()`) to an other.
      *
      * @param string      $timeString time string to translate
-     * @param string|null $to         output locale of the result returned ("en" by default)
+     * @param string|null $to         output locale of the result returned ("en" by layout)
      *
      * @return string
      */
@@ -4606,7 +4606,7 @@ interface CarbonInterface extends DateTimeInterface, JsonSerializable
      *                                                             - 'join' entry determines how to join multiple parts of the string
      *                                                             `  - if $join is a string, it's used as a joiner glue
      *                                                             `  - if $join is a callable/closure, it get the list of string and should return a string
-     *                                                             `  - if $join is an array, the first item will be the default glue, and the second item
+     *                                                             `  - if $join is an array, the first item will be the layout glue, and the second item
      *                                                             `    will be used instead of the glue for the last item
      *                                                             `  - if $join is true, it will be guessed from the locale ('list' translation file entry)
      *                                                             `  - if $join is missing, a space will be used as glue
@@ -4618,7 +4618,7 @@ interface CarbonInterface extends DateTimeInterface, JsonSerializable
      *                                                             - CarbonInterface::DIFF_RELATIVE_TO_OTHER add before/after modifier
      *                                                             Default value: CarbonInterface::DIFF_ABSOLUTE
      * @param bool                                        $short   displays short format of time units
-     * @param int                                         $parts   maximum number of parts to display (default value: 1: single unit)
+     * @param int                                         $parts   maximum number of parts to display (layout value: 1: single unit)
      * @param int                                         $options human diff options
      *
      * @return string

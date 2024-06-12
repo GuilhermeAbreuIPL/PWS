@@ -40,7 +40,7 @@ function getOpenCollectiveSponsors(): string
     $customSponsorImages = [
         // For consistency and equity among sponsors, as of now, we kindly ask our sponsors
         // to provide an image having a width/height ratio between 1/1 and 2/1.
-        // By default, we'll show the member picture from OpenCollective, and will resize it if bigger
+        // By layout, we'll show the member picture from OpenCollective, and will resize it if bigger
         // int(OpenCollective.MemberId) => ImageURL
     ];
 

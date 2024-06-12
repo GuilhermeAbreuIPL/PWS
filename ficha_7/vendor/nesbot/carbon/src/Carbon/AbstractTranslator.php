@@ -64,7 +64,7 @@ abstract class AbstractTranslator extends Translation\Translator
     /**
      * Return a singleton instance of Translator.
      *
-     * @param string|null $locale optional initial locale ("en" - english by default)
+     * @param string|null $locale optional initial locale ("en" - english by layout)
      *
      * @return static
      */
